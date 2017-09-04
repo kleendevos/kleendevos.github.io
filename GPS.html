@@ -6,11 +6,29 @@
 </head>
 <body>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<style>
+    #mapCanvas {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+    }
+    form {
+        width: 500px;
+        text-align: center;
+        background-color: red;
+        border: 1px solid black;
+        box-sizing: border-box;
+        padding: 25px;
+        margin-bottom: 50px;
+    }
+</style>
+
 current Coordinates: <output id="coordinaten"></output>
 
+
 <script>
-
-
    navigator.geolocation.getCurrentPosition(showPosition, errorHandler,{
         enableHighAccuracy: true,
         maximumAge: 1000,
@@ -18,16 +36,13 @@ current Coordinates: <output id="coordinaten"></output>
     });
 
     function showPosition (position) {
-       alert(position.coords.latitude+ " " +
+        coords.innerHTML =(position.coords.latitude + " " +
            position.coords.longitude);
     }
 
    function errorHandler(error) {
-        alert ("Error " + error.code + " " + error.message);
+       coords.innerHTML = ("Error " + error.code + " " + error.message);
    }
-
-
-
 </script>
 
 </body>
