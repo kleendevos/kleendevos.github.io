@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+current Coordinates: <output id="coordinaten"></output>
+
+<script>
+
+
+   navigator.geolocation.getCurrentPosition(showPosition, errorHandler,{
+        enableHighAccuracy: true,
+        maximumAge: 1000,
+        timeout: 30000,
+    });
+
+    function showPosition (position) {
+       alert(position.coords.latitude);
+    }
+
+   function errorHandler(error) {
+        alert ("wrong");
+   }
+
+
+
+</script>
+
+</body>
+</html>
