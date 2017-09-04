@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Droid+Sans+Mono|Lato|Montserrat|Open+Sans|Roboto|Share+Tech+Mono|Source+Sans+Pro|Zilla+Slab+Highlight"
+          rel="stylesheet">
+</head>
+
+<style>
+    body {
+        background-color: #1a2930;
+        font-family: 'Share Tech Mono', monospace;
+        color: white;
+        font-size: x-large;
+    }
+    form {
+        width: 250px;
+        text-align: center;
+    }
+    label {
+        font-size: large;
+        display: block;
+    }
+    #birthdate {
+        font-family: 'Share Tech Mono', monospace;
+        font-size: x-large;
+        background-color: #1a2930;
+        color: white;
+        border: none;
+        padding: 0px;
+        height: 3em;
+        text-align: center;
+    }
+    #berekenbutton {
+        font-family: 'Share Tech Mono', monospace;
+        font-size: medium;
+        background-color: #f7ce3e;
+        border: none;
+        padding: 1em;
+    }
+    header {
+        background-color: #f7ce3e;
+        margin-bottom: 2em;
+        height: 200px;
+        padding: 1em;
+        text-align: right;
+        vertical-align: bottom;
+        font-family: 'Share Tech Mono', monospace;
+        color: #1a2930;
+    }
+    #kleinetekst {
+        font-size: small;
+        margin-top: 1px;
+    }
+    #koptekst {
+        margin-top: 75px;
+        margin-bottom: 1px;
+    }
+    #tekst {
+        margin-left: 1.5em;
+    }
+    #display {
+        font-size: 800%;
+        text-align: center;
+    }
+    #days {
+        margin-left: 1em;
+        text-align: center;
+    }
+    img {
+        float: left;
+    }
+</style>
+
+<header>
+    <p id="koptekst">you don't look a day over your actual age</p>
+    <p id="kleinetekst">but for how long? </br> Count the days till your next bday! </p>
+</header>
+
+<body>
+
+<form id="invul">
+    <div>
+        <label for="birthdate">Enter your Birthdate: </label>
+        <input id="birthdate" type="text" value="" placeholder="YYYY-MM-DD">
+    </div>
+
+    <div>
+        <input id="berekenbutton" type="submit" value="Calculate">
+    </div>
+</form>
+
+<div id="display"></div>
+
+<p id="days">days till your next bday!</p>
+
+<script>
+    var b = document.getElementById('invul');
+    b.addEventListener("submit", bereken);
+    function bereken(e) {
+        e.preventDefault();
+        var bday = document.getElementById('birthdate');
+        var today = new Date();
+        var todaymont = today.getMonth();
+        var todayd = today.getDate();
+        console.log(bday, today);
+        console.log(bday.value);
+        var bdate = new Date(bday.value);
+        console.log(bdate);
+        bdate.setFullYear(today.getFullYear());
+        if (today > bdate) {
+            bdate.setFullYear(today.getFullYear() + 1);
+        }
+        var daystillbday = Math.floor((bdate - today) / (1000 * 60 * 60 * 24));
+        console.log(daystillbday);
+        var display = document.getElementById('display')
+        display.innerHTML = daystillbday;
+    }
+</script>
+<footer>
+    <img src="/Users/vdabcursist/Downloads/slinger.png"/>
+</footer>
+
+</body>
+</html>
